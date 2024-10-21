@@ -1,0 +1,115 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+  body{
+    font-family: 'Quicksand', sans-serif;
+    background-color:#acaaaa36 ;
+
+  }
+    .textbox{
+        width:300px;
+        border:none;
+        outline:none;
+        position: absolute;
+        height:32px;
+        border-radius:4px;
+        background-color:#acaaaa38;
+        font-size:20px;
+        color:white;
+
+    }
+
+    .box3{
+  width: 350px;
+  height: 600px;
+
+  padding:40px;
+  padding-left:60px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #191919e5;
+
+  border:none;
+  border-radius: 15px;
+}
+
+
+    #submitbutton{
+      border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid  #90c225;
+  padding: 10px 20px;
+  outline: none;
+  color: rgb(255, 255, 255);
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+  font-family: 'Quicksand', sans-serif;
+    }
+    #submitbutton:hover{
+      background:  #90c225;
+    }
+    label{
+    color:white;
+    font-size:20px;
+
+    .textarea{
+
+        border:none;
+        outline:none;
+        position: absolute;
+        border-radius:4px;
+        background-color:#acaaaa38;
+        font-size:50pt;
+        color:white;
+
+    }
+
+
+    }
+</style>
+<body>
+  <div class="box3">
+<form action="/sensorprediction" method="POST">
+
+<label for = "address" >Address: </label><br><br><br>
+<textarea name= "address" id="address" name= "textarea" rows="4" cols="40" placeholder="Enter the address here"></textarea>
+
+<input id="submitbutton" type="submit" value="SUBMIT">
+
+</form>
+    <br><hr style="background-color:white;border:none;">
+{% if pred !="" %}
+<label for = "long" >Longitude: </label><br>
+<input type = "text" class ="textbox" id = "long" name = "long" placeholder={{long}} readonly><br><br>
+
+<label for = "lat" >Latitude: </label><br>
+<input type = "text" id = "lat" class ="textbox" name = "lat" placeholder={{lat}} readonly><br><br>
+
+
+<label for = "temp" >Temperature: </label><br>
+<input type = "text" id = "temp" class ="textbox" name = "temp" placeholder={{temp}}&#8451; readonly><br><br>
+
+
+<label for = "dewpoint" >Dewpoint: </label><br>
+<input type = "text" id = "dewpoint" class ="textbox" name = "dewpoint" placeholder={{dp}}&#8451; readonly><br><br>
+
+<label for = "humidity" >Humidity: </label><br>
+<input type = "text" id = "humidity" class ="textbox" name = "humidity"  placeholder={{hum}}% readonly><br><br>
+
+<h3 style="color:white;">The Predicted Yield is: {{pred[0]}} Bushels/Acre</h3>
+{%endif%}
+</div>
+</body>
+</html>

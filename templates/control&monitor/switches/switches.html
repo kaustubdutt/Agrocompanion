@@ -1,0 +1,82 @@
+{%extends "header.html"%}
+{%block content%}
+<style>
+
+    button{
+background:transparent;
+border:1px solid #90c225;
+width: 250px;
+height: 40px;
+border-radius: 10px;
+color: #90c225;
+font-size: 20px;
+font-weight: 700;
+outline:none;
+}
+.select-option{
+background-color: #000000bd;
+}
+button:hover{
+background:#90c225;
+color:white;
+}
+button:focus{
+outline:none;}
+select{
+    outline: none;
+    width: 220px;
+    height: 45px;
+    font-size: 30px;
+    text-align: center;
+    background:#191919e5;
+    color:#90c225;
+    border:1px solid #90c225;
+    border-radius:5px;
+}
+</style>
+<br><br>
+<div style="border-radius:10px;background:#191919e5;text-align:center;height: 25%;width: 455px;margin-left: 550px;padding-top: 4%;padding-bottom: 6%;">
+<div id="light-div">
+    <br><br><br>
+    <div v-if="current_status == 0">
+        <i class="far fa-lightbulb" style="color:#90c225;font-size:100px"></i>
+    </div>
+    <div v-if="current_status == 1">
+       <i class="fas fa-lightbulb" style="color:#90c225;font-size:100px"></i>
+    </div>
+<span></span><br><br>
+<select class="select" name="light_select" v-model="current_device" v-on:change="getchangedata()" >
+    {%for i in data%}
+    <option value="{{i}}">{{i}}</option>
+    {%endfor%}
+</select>
+<br><br><br>
+<button v-on:click="onlight()">ON</button><br><br>
+<button v-on:click="offlight()">OFF</button><br>
+    <p style="margin-top:5px;color:#90c225;font-weight:600;">current status:^*current_status*^</p>
+</div>
+</div>
+<script>
+    new Vue({
+    el:"#light-div",
+    data:{current_device:"",
+    current_status:0},
+    methods:{
+    onlight:function(){
+    this.current_status = 1;
+    axios.post('http://127.0.0.1:5000/changestatus',{currentdevice:this.current_device,currentstatus:this.current_status}).then(response=>{console.log(response);});
+    },
+    offlight:function(){
+    this.current_status = 0;
+    axios.post('http://127.0.0.1:5000/changestatus',{currentdevice:this.current_device,currentstatus:this.current_status}).then(response=>{console.log(response);});
+    },
+    getchangedata:function(){
+    axios.post('http://127.0.0.1:5000/getdevicedata',{currentdevice:this.current_device}).then(response=>{var x = response.data;this.current_device=x["currentdevice"];this.current_status=x["currentstatus"]});
+
+    },
+
+    },
+    delimiters:['^*','*^']
+    });
+</script>
+{%endblock%}

@@ -1,0 +1,100 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+<style>
+  body{
+    font-family: 'Quicksand', sans-serif;
+    background-color:#acaaaa36 ;
+
+  }
+    .textbox{
+        width:250px;
+        border:none;
+        outline:none;
+        height:32px;
+        border-radius:4px;
+        background-color:#acaaaa38;
+        color:white;
+        font-size:20px;
+
+    }
+    #submitbutton{
+      border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #90c225;
+  padding: 14px 40px;
+  outline: none;
+  color: rgb(255, 255, 255);
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+  font-family: 'Quicksand', sans-serif;
+    }
+    #submitbutton:hover{
+     background:  #90c225;
+
+    }
+    label{
+    color:white;
+    font-size:20px;}
+
+    .box3{
+  width: 320px;
+  height: 550px;
+
+  padding:40px;
+  padding-left:60px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #191919e5;
+
+  border-radius: 15px;
+}
+}
+</style>
+</head>
+
+<body>
+<h2 style="text-align:center;"> CROP YIELD PREDICTION</h2>
+  <div class="box3">
+    <form action = "/userprediction" method="post">
+      <br><hr style="background-color:white ;border:none; ">
+
+ <label for = "longitude" >Longitude </label>
+ <input type = "text" class ="textbox" id = "longitude" name = "longitude"><br><br>
+
+ <label for = "latitude" >Latitude </label>
+ <input type = "text" class ="textbox" id = "latitude" name = "latitude"><br><br>
+
+ <label for = "temp" >Temparature </label>
+ <input type = "text" class ="textbox" id = "temp" name = "temp" placeholder="Enter in &#8451;"><br><br>
+
+
+ <label for = "dewpoint" >Dewpoint </label>
+ <input type = "text" class ="textbox" id = "dewpoint" name = "dewpoint" placeholder="Enter in &#8451;"><br><br>
+
+ <label for = "humidity" >Humidity </label>
+ <input type = "text" class ="textbox" id = "humidity" name = "humidity" placeholder="Fraction between 0 to 1"><br><br><br>
+
+ <input type = "submit" id="submitbutton" value = "SUBMIT" >
+
+ </form>
+
+
+
+{% if pred !="" %}
+<h3 style="color:white;">The Predicted Yield is: {{pred[0]}} Bushels/Acre</h3>
+{%endif%}
+</div>
+</body>
+</html>

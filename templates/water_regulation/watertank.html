@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  #background-color:#acaaaa36 ;
+  background-color: #191919d0;
+
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 33%;
+  height: 50px;
+  padding: 50px;
+
+}
+
+/* Remove extra left and right margins, due to padding */
+
+
+
+/* Style the counter cards */
+.card {
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  #background-color: #191919d0;
+  background-color:WHITE ;
+  border-radius:10px;
+
+}
+</style>
+</head>
+<body>
+<br><br>
+<h1 align=center style="color:#ffffff">WATER TANK STATUS</h1>
+<br><br>
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+    <img src="{{url_for('static',filename='images/flow.png')}}" style="width:50%">
+    <h3>FLOWRATE</h3>
+<p style="font-size:50px; font-weight:600; color:#0994ff ">{{flowrate}} L/min </p>
+                </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+        {% if (percentage>=0 and percentage<=30) %}
+          <img src="{{url_for('static',filename='images/tank3.jpg')}}" style="width:75%">
+
+       {% elif (percentage>= 31 and percentage <=70) %}
+        <img src="{{url_for('static',filename='images/tank 2.jpg')}}" style="width:75%">
+
+        {% elif (percentage>=71 and percentage <=100) %}
+        <img src="{{url_for('static',filename='images/tank.jpg')}}" style="width:75%">
+{% endif %}
+
+
+      <h3>WATER LEVEL</h3>
+      <p style="font-size:50px; font-weight:600; color:#0994ff ">{{percentage}} %</p>
+
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+    <img src="{{url_for('static',filename='images/rate.png')}}" style="width:50%">
+      <h3>AMOUNT OF WATER TRANSFERRED</h3>
+ <p style="font-size:50px; font-weight:600; color:#0994ff ">{{amount}} ML</p>
+
+    </div>
+  </div>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+{%extends "header.html"%}
+{%block content%}
+<style>
+    button{
+        width:40%;
+        height:60px;
+        color:white;
+        border:none;
+        border-radius:8px;
+        transition: 0.25s;
+        cursor: pointer;
+        background-color:#191919d0 ;
+    }
+    button:hover{
+      background:  #90c225;
+    }
+    body
+    {
+    background-color:#acaaaa36 ;
+    }
+</style>
+<div style="text-align: center;margin-top: 230px;">
+<a href="/selection1"><button>Control And Monitor</button></a><br><br>
+<a href="/selection2"><button>Water Regulation</button></a><br><br>
+    <a href="/selection3"><button>Crop Yield Prediction</button></a><br><br>
+</div>
+{%endblock%}

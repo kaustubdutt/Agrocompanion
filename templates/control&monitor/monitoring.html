@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  #background-color:#acaaaa36 ;
+  background-color: #191919d0;
+
+}
+
+/* Float four columns side by side */
+.column {
+  float: left;
+  width: 33%;
+  height: 50px;
+  padding: 50px;
+
+}
+
+/* Remove extra left and right margins, due to padding */
+
+
+
+/* Style the counter cards */
+.card {
+  box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  #background-color: #191919d0;
+  background-color:WHITE ;
+  border-radius:10px;
+
+}
+</style>
+</head>
+<body>
+<br> <br>
+<h1 style ="text-align:center;">CURRENT VALUE OF PARAMETERS</h1>
+<br><br>
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+    <img src="{{url_for('static',filename='images/temp.png')}}" style="width:50%">
+      <h3>TEMPERATURE</h3>
+<p style="font-size:50px; font-weight:600; color:#f34b6e ">{{temp}} &#8451;</p>
+                </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+    <img src="{{url_for('static',filename='images/hum.png')}}" style="width:50%">
+      <h3>HUMIDITY</h3>
+      <p style="font-size:50px; font-weight:600; color:#2196f3 ">{{hum}} %</p>
+
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+    <img src="{{url_for('static',filename='images/soil.png')}}" style="width:50%">
+      <h3>SOIL MOISTURE</h3>
+ <p style="font-size:50px; font-weight:600; color:#3f704d ">{{soil}} %</p>
+
+    </div>
+  </div>
+
+
+</div>
+
+</body>
+</html>
